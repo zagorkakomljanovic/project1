@@ -1,0 +1,9 @@
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\bin\Debug\konekcija.exe.config
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\bin\Debug\konekcija.exe
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\bin\Debug\konekcija.pdb
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.Form1.resources
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.Properties.Resources.resources
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.csproj.GenerateResource.Cache
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.exe
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.pdb
+C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.csprojResolveAssemblyReference.cache
