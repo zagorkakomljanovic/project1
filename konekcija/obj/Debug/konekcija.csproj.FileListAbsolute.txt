@@ -7,3 +7,12 @@ C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\D
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.exe
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.pdb
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.csprojResolveAssemblyReference.cache
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.exe.config
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.exe
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.pdb
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.csprojResolveAssemblyReference.cache
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Form1.resources
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Properties.Resources.resources
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.csproj.GenerateResource.Cache
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.exe
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.pdb

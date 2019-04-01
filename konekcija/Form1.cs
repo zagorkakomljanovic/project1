@@ -4,8 +4,13 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Linq;
+
+
+
 //KOMENTARCIC
 //novi branch Misko u zagorkinom projektu
+
 namespace konekcija
 {
     public partial class Form1 : Form
@@ -15,7 +20,9 @@ namespace konekcija
         //ovdje je trebalo instalirati microsoft Access Database Engine 2010 ali za 32bitni sistem tacnije sa ovog linka :https://www.microsoft.com/en-us/download/confirmation.aspx?id=13255
         const string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\ASManager\\ASRes\\ASConfig.mdb;Persist Security Info = False;";
 
+
         // MISKOVA PROMJENAAA JUPIIIII
+
         // lista(spisak) tabela u Access bazi, ova lista je nadalje vidljiva i u funkciji koja sakuplja imena tabela GetTableNames();
         List<string> tables = new List<string>();
 
@@ -40,8 +47,8 @@ namespace konekcija
             GetTableNames();
 
             //komunikacija izmedju dvije baze
-            // lokacija za SQL server 
-            const string connectionStringDest = "Data Source = PD; Initial Catalog=Moja;Integrated Security=SSPI;";
+            //lokacija za SQL server 
+            const string connectionStringDest = "Data Source = PD; Initial Catalog=Moja;Integrated Security=SSPI; MultipleActiveResultSets=true;";
 
             using (var sourceConnection = new OleDbConnection(connectionString))
             {
@@ -68,14 +75,15 @@ namespace konekcija
                             int n1 = (int)commandSourceData2.ExecuteScalar();
                             MessageBox.Show(" maksimalni " + m1 + " ,broj redova " + n1);
 
+
+                            // m1 je maximalni CardholderID a n1 je broj redova u Access tabeli Cardholder
+                            var commandDestinationData1 = new SqlCommand("Select MAX(CardholderID) from " + tbl, destinationConnection);
+                            var commandDestinationData2 = new SqlCommand("Select COUNT(CardholderID) from " + tbl, destinationConnection);
+                            int n2 = (int)commandDestinationData2.ExecuteScalar();
+
                             //kopiranje
                             using (var bulkCopy = new SqlBulkCopy(destinationConnection))
                             {
-                                // m1 je maximalni CardholderID a n1 je broj redova u Access tabeli Cardholder
-                                var commandDestinationData1 = new SqlCommand("Select MAX(CardholderID) from " + tbl, destinationConnection);
-                                var commandDestinationData2 = new SqlCommand("Select COUNT(CardholderID) from " + tbl, destinationConnection);
-                                int n2 = (int)commandDestinationData2.ExecuteScalar();
-
                                 //ako je tabela u SQL-u NIJE prazna
                                 //problem -----> ako je prazna ne moze da se nadje maximalni CardholderID 
                                 if (n2 != 0)
@@ -89,7 +97,6 @@ namespace konekcija
                                     {
 
                                         MessageBox.Show("ima novih kardholdera,kopira se");
-
                                         // iz  access tablel izvlace se podaci(korisnici) koji su novi 
                                         var commandSourceData = new OleDbCommand("Select CardholderID, Name, FirstName, LastName, Gender from " + tbl + " where CardholderID <=" + @m1 + " and CardholderID >" + @m2, sourceConnection);
 
@@ -108,15 +115,13 @@ namespace konekcija
                                         catch (Exception ex) { MessageBox.Show(ex.Message); }
                                         finally { reader.Close(); }
 
-
                                     }
+                                    //brisanje
                                     else
-                                    {
-                                    }
+                                    { }
                                 }
                                 else
                                 {
-
                                     //ako je tabela SQL prazna sve kopiramo 
                                     var commandSourceData = new OleDbCommand("Select CardholderID, Name, FirstName, LastName, Gender from " + tbl, sourceConnection);
                                     var reader = commandSourceData.ExecuteReader();
@@ -128,6 +133,77 @@ namespace konekcija
                                 }
 
                             }
+
+                            if (n2 != 0)
+                            {
+                                int m2 = (int)commandDestinationData1.ExecuteScalar();
+                                MessageBox.Show(" maksimalni " + m2 + " ,broj redova " + n2);
+                                if (n1 < n2)
+                                {
+                                    // lista cardholderID-a iz SQL baze
+
+                                    SqlDataReader rdr = null;
+                                    List<int> lista = new List<int>();
+                                    var commandDestinationData3 = new SqlCommand("Select CardholderID from " + tbl, destinationConnection);
+                                    rdr = commandDestinationData3.ExecuteReader();
+                                    while (rdr.Read())
+                                    {
+                                        // MessageBox.Show(" "+rdr[0]);
+                                        lista.Add(rdr.GetInt32(0));
+                                    }
+                                    // for (int i = 0; i < lista.Count; i++)
+                                    //   MessageBox.Show(" "+lista[i]);
+
+                                    // lista  CardholderId iz Access baze
+                                    OleDbDataReader Sourcerdr = null;
+                                    List<int> sourceLista = new List<int>();
+                                    var commandSourceData3 = new OleDbCommand("Select CardholderID from " + tbl, sourceConnection);
+                                    Sourcerdr = commandSourceData3.ExecuteReader();
+                                    while (Sourcerdr.Read())
+                                    {
+                                        // MessageBox.Show(" "+rdr[0]); 
+                                        sourceLista.Add(Sourcerdr.GetInt32(0));
+                                    }
+                                    //for (int i = 0; i < sourceLista.Count; i++)
+                                    //MessageBox.Show(" " + sourceLista[i]);
+                                    var firstNotSecond = lista.Except(sourceLista).ToList();
+                                    MessageBox.Show(" proslo");
+                                    //var commandDestinationData4= new SqlCommand("Select * from "+tbl, destinationConnection);
+                                    Sourcerdr.Close();
+
+                                    MessageBox.Show(" proslo");
+                                    SqlDataReader rdr1 = null;
+                                    for (int i = 0; i < firstNotSecond.Count; i++)
+                                    {
+                                        MessageBox.Show(" " + firstNotSecond[i]);
+                                        int n = (int)firstNotSecond[i];
+                                        var command = new SqlCommand("Delete from " + tbl + " where CardholderID=" + @firstNotSecond[i], destinationConnection);
+
+                                        try
+                                        {
+
+                                            rdr1 = command.ExecuteReader();
+                                            MessageBox.Show("successfully data Deleted", "user information");
+                                            while (rdr1.Read())
+                                            {
+                                            }
+                                        }
+                                        catch (Exception ec)
+                                        {
+                                            MessageBox.Show(ec.Message);
+                                        }
+
+                                    }
+
+                                    //SqlDataReader rdr = null;
+                                    //var commandDestinationData5 = new SqlCommand("DELETE from " + tbl + "where CardholderID IN" + @firstNotSecond, destinationConnection);
+                                    //commandDestinationData5.ExecuteReader();
+                                }
+                                else { }
+
+                            }
+                            else { }
+
                             MessageBox.Show("Cardholder izlaz");
                             return;
                         }
@@ -135,42 +211,38 @@ namespace konekcija
 
                         {
                             MessageBox.Show("nije cardholder");
-
-
                         }
 
                     }
+                    sourceConnection.Close();
+                    destinationConnection.Close();
                 }
             }
 
-
         }
 
-
-        public List<string> GetTableNames()
-        {
-            try
+            public List<string> GetTableNames()
             {
-                using (OleDbConnection con = new OleDbConnection(connectionString))
+                try
                 {
-                    con.Open();
-                    //DataTable schema = con.GetSchema("Columns");
-                    //foreach (DataRow row in schema.Rows)
-                    //{
-                    //    tables.Add(row.Field<string>("TABLE_NAME"));
-                    //}
-                    //shema koja sadrzi imena tabela u Access bazi
-                    foreach (DataRow r in con.GetSchema("Tables").Select("TABLE_TYPE = 'TABLE'"))
+                    using (OleDbConnection con = new OleDbConnection(connectionString))
                     {
-                        tables.Add(r["TABLE_NAME"].ToString());
+                        con.Open();
+
+                        //shema koja sadrzi imena tabela u Access bazi
+                        foreach (DataRow r in con.GetSchema("Tables").Select("TABLE_TYPE = 'TABLE'"))
+                        {
+                            tables.Add(r["TABLE_NAME"].ToString());
+                        }
+                        return tables;
                     }
-                    return tables;
                 }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                return tables;
+
+
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            return tables;
-
-
-        }
+        
     }
 }
+
