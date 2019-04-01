@@ -7,6 +7,10 @@ using System.Data.SqlClient;
 using System.Linq;
 
 
+
+//KOMENTARCIC
+//novi branch Misko u zagorkinom projektu
+
 namespace konekcija
 {
     public partial class Form1 : Form
@@ -15,7 +19,9 @@ namespace konekcija
         //ova lokacija se kooristi u fji GetTableNames() kao argumetn OleDbConnection() fje 
         //ovdje je trebalo instalirati microsoft Access Database Engine 2010 ali za 32bitni sistem tacnije sa ovog linka :https://www.microsoft.com/en-us/download/confirmation.aspx?id=13255
         const string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\ASManager\\ASRes\\ASConfig.mdb;Persist Security Info = False;";
-        
+
+
+        // MISKOVA PROMJENAAA JUPIIIII
 
         // lista(spisak) tabela u Access bazi, ova lista je nadalje vidljiva i u funkciji koja sakuplja imena tabela GetTableNames();
         List<string> tables = new List<string>();
