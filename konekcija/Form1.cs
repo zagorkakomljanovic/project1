@@ -62,6 +62,9 @@ namespace konekcija
                             case "Cardholder":
                                 Cardholder_update(sourceConnection, destinationConnection, tbl);
                                 break;
+                            case "Card":
+                                Card_update(sourceConnection, destinationConnection, tbl);
+                                break;
                             default:
                                 Console.WriteLine("Default case");
                                 break;
@@ -118,8 +121,9 @@ namespace konekcija
                         {
                             tables.Add(r["TABLE_NAME"].ToString());
                         }
-                        return tables;
-                        con.Close();
+                    con.Close();
+                    return tables;
+                        
                 }
                     
             }
@@ -158,7 +162,7 @@ namespace konekcija
                     {
                         MessageBox.Show("ima novih kardholdera,kopira se");
                         // iz  access tablel izvlace se podaci(korisnici) koji su novi 
-                        var commandSourceData = new OleDbCommand("Select LogID, CardType, CardholderID, ControlerID, Direction, LocalTime from " + tbl + " where LogID <=" + @m1 + " and LogID >" + @m2, sourceConnectionLog);
+                        var commandSourceData = new OleDbCommand("Select LogID, CardCode, CardType , CardholderID , ControllerID , Direction , LocalTime from " + tbl + " where LogID <=" + @m1 + " and LogID >" + @m2, sourceConnectionLog);
 
                         // ispisuje se CardholderID koji se dodaje u tabelu
                         var commandSourceData3 = new OleDbCommand("Select LogID from " + tbl + " where LogID <=" + @m1 + "and LogID >" + @m2, sourceConnectionLog);
@@ -166,7 +170,7 @@ namespace konekcija
                         MessageBox.Show(" Ubacje se LogID " + c);
 
                         //cita se iz izvorne Access tabele
-                        var reader = commandSourceData3.ExecuteReader();
+                        var reader = commandSourceData.ExecuteReader();
                         //ime tabele u SQL bazi
                         bulkCopy.DestinationTableName = "dbo." + tbl;
                         //pisanje u tabelu 
@@ -184,7 +188,7 @@ namespace konekcija
                 else
                 {
                     //ako je tabela SQL prazna sve kopiramo 
-                    var commandSourceData = new OleDbCommand("Select LogID, CardCode, CardType, CardholderID, ControllerID, Direction, LocalTime from " + tbl, sourceConnectionLog);
+                    var commandSourceData = new OleDbCommand("Select LogID, CardCode, CardType, ControllerID, Direction, LocalTime, CardholderID from " + tbl, sourceConnectionLog);
                     var reader = commandSourceData.ExecuteReader();
                     MessageBox.Show("tabela prazna ----> ima novih logova,kopira se");
                     bulkCopy.DestinationTableName = "dbo." + tbl;
@@ -231,7 +235,7 @@ namespace konekcija
                             MessageBox.Show("ima novih kardholdera,kopira se");
                             // iz  access tablel izvlace se podaci(korisnici) koji su novi 
                             var commandSourceData = new OleDbCommand("Select CardholderID, Name, FirstName, LastName, Gender from " + tbl + " where CardholderID <=" + @m1 + " and CardholderID >" + @m2, sourceConnection);
-
+                            
                             // ispisuje se CardholderID koji se dodaje u tabelu
                             var commandSourceData3 = new OleDbCommand("Select CardholderID from " + tbl + " where CardholderID <=" + @m1 + "and CardholderID >" + @m2, sourceConnection);
                             int c = (int)commandSourceData3.ExecuteScalar();
@@ -329,7 +333,139 @@ namespace konekcija
                 MessageBox.Show("Cardholder izlaz");
                 return;
             }
-        
+
+            public void Card_update(OleDbConnection sourceConnection, SqlConnection destinationConnection, string tbl)
+            {
+
+                MessageBox.Show("Card ulaz");
+                // m1 je maximalni CardholderID a n1 je broj redova u Access tabeli Cardholder
+                var commandSourceData1 = new OleDbCommand("Select MAX(CardID) from " + tbl, sourceConnection);
+                var commandSourceData2 = new OleDbCommand("Select COUNT(CardID) from " + tbl, sourceConnection);
+                int m1 = (int)commandSourceData1.ExecuteScalar();
+                int n1 = (int)commandSourceData2.ExecuteScalar();
+                MessageBox.Show(" maksimalni " + m1 + " ,broj redova " + n1);
+
+                // m1 je maximalni CardholderID a n1 je broj redova u Access tabeli Cardholder
+                var commandDestinationData1 = new SqlCommand("Select MAX(CardID) from " + tbl, destinationConnection);
+                var commandDestinationData2 = new SqlCommand("Select COUNT(CardID) from " + tbl, destinationConnection);
+                int n2 = (int)commandDestinationData2.ExecuteScalar();
+
+                //kopiranje
+                using (var bulkCopy = new SqlBulkCopy(destinationConnection))
+                {
+                    //ako je tabela u SQL-u NIJE prazna
+                    //problem -----> ako je prazna ne moze da se nadje maximalni CardholderID 
+                    if (n2 != 0)
+                    {
+                        //ako je prazna ne moze da se nadje maximalni CardholderID , pa se tek sada racuna
+                        int m2 = (int)commandDestinationData1.ExecuteScalar();
+                        MessageBox.Show(" maksimalni " + m2 + " ,broj redova " + n2);
+
+                        // ako broj redova NIJE isti i ako je m1 u accessu veci od m2u SQL kopiraju se oni koji su novi   
+                        if (n1 != n2 && m1 > m2)
+                        {
+                            MessageBox.Show("ima novih kartica, kopira se");
+                            // iz  access tablel izvlace se podaci(korisnici) koji su novi 
+                            var commandSourceData = new OleDbCommand("Select CardID, CardholderID, CardNo, CardNoInt from" + tbl + " where CardID <=" + @m1 + " and CardID >" + @m2, sourceConnection);
+
+                            // ispisuje se CardholderID koji se dodaje u tabelu
+                            var commandSourceData3 = new OleDbCommand("Select CardID from " + tbl + " where CardID <=" + @m1 + "and CardID >" + @m2, sourceConnection);
+                            int c = (int)commandSourceData3.ExecuteScalar();
+                            MessageBox.Show(" Ubacje se CardID " + c);
+
+                            //cita se iz izvorne Access tabele
+                            var reader = commandSourceData3.ExecuteReader();
+                            //ime tabele u SQL bazi
+                            bulkCopy.DestinationTableName = "dbo." + tbl;
+                            //pisanje u tabelu 
+                            try { bulkCopy.WriteToServer(reader); }
+                            catch (Exception ex) { MessageBox.Show(ex.Message); }
+                            finally { reader.Close(); }
+                        }
+                        //brisanje
+                        else
+                        { }
+                    }
+                    else
+                    {
+                        //ako je tabela SQL prazna sve kopiramo 
+                        var commandSourceData = new OleDbCommand("Select CardID, CardNo, CardNoIntCode, CardholderID from " + tbl ,sourceConnection);
+                        var reader = commandSourceData.ExecuteReader();
+                        MessageBox.Show("tabela prazna ----> ima novih kartica,kopira se");
+                        bulkCopy.DestinationTableName = "dbo." + tbl;
+                        try { bulkCopy.WriteToServer(reader); }
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+                        finally { reader.Close(); }
+                    }
+                }
+
+                if (n2 != 0)
+                {
+                    int m2 = (int)commandDestinationData1.ExecuteScalar();
+                    MessageBox.Show(" maksimalni " + m2 + " ,broj redova " + n2);
+                    if (n1 < n2)
+                    {
+                        // lista  je lista cardholderID-a iz SQL baze
+                        SqlDataReader rdr = null;
+                        List<int> lista = new List<int>();
+                        var commandDestinationData3 = new SqlCommand("Select CardID from " + tbl, destinationConnection);
+                        rdr = commandDestinationData3.ExecuteReader();
+                        while (rdr.Read())
+                        {
+                            // MessageBox.Show(" "+rdr[0]);
+                            lista.Add(rdr.GetInt32(0));
+                        }
+                        // sourceLista je lista  CardholderId iz Access baze
+                        OleDbDataReader Sourcerdr = null;
+                        List<int> sourceLista = new List<int>();
+                        var commandSourceData3 = new OleDbCommand("Select Card from " + tbl, sourceConnection);
+                        Sourcerdr = commandSourceData3.ExecuteReader();
+                        while (Sourcerdr.Read())
+                        {
+                            // MessageBox.Show(" "+rdr[0]); 
+                            sourceLista.Add(Sourcerdr.GetInt32(0));
+                        }
+                        //for (int i = 0; i < sourceLista.Count; i++)
+                        //MessageBox.Show(" " + sourceLista[i]);
+
+                        //svi oni koji su izbrisani iz access baze, tj oni kojih ima u sql ali ne u access,oni se posle brisu, izuzetak je CardholderID=-1 jer on je za neregistrovane korisnike kartica
+                        var firstNotSecond = lista.Except(sourceLista).ToList();
+                        MessageBox.Show(" proslo");
+                        //var commandDestinationData4= new SqlCommand("Select * from "+tbl, destinationConnection);
+                        Sourcerdr.Close();
+
+                        MessageBox.Show(" proslo");
+                        SqlDataReader rdr1 = null;
+                        for (int i = 0; i < firstNotSecond.Count; i++)
+                        {
+                            if (firstNotSecond[i] != -1)
+                            {
+                                MessageBox.Show(" " + firstNotSecond[i]);
+                                int n = (int)firstNotSecond[i];
+                                var command = new SqlCommand("Delete from " + tbl + " where CardID=" + @firstNotSecond[i], destinationConnection);
+                                try
+                                {
+                                    rdr1 = command.ExecuteReader();
+                                    MessageBox.Show("successfully data Deleted", "user information");
+                                    while (rdr1.Read())
+                                    { }
+                                }
+                                catch (Exception ec)
+                                {
+                                    MessageBox.Show(ec.Message);
+                                }
+                            }
+                            else { }
+                        }
+                    }
+                    else { }
+                }
+                else { }
+
+                MessageBox.Show("Card izlaz");
+                return;
+            }
+
     }
 }
 
