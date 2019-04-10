@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CardCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CardType" Type="int" />
+          <Property Name="ControllerID" Type="int" />
+          <Property Name="Direction" Type="int" Nullable="false" />
+          <Property Name="LocalTime" Type="datetime" Nullable="false" />
+          <Property Name="CardholderID" Type="int" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="32" />
+          <Property Name="CardNoIntCode" Type="nvarchar" MaxLength="40" />
+          <Property Name="CardholderID" Type="int" />
+        </EntityType>
+        <EntityType Name="Cardholder">
+          <Key>
+            <PropertyRef Name="CardholderID" />
+          </Key>
+          <Property Name="CardholderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="150" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Gender" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Moja.dbo.menadzeri$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="menadzeri$">
+          <Property Name="Rizzi Vicenzo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Alfio Miceli" Type="nvarchar" MaxLength="255" />
+          <Property Name="n" Type="nvarchar" MaxLength="255" />
+          <Property Name="internal" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Moja.dbo.nova' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="template$">
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumLog" Type="float" />
+          <Property Name="SumDirections" Type="float" />
+          <Property Name="Punch In Time" Type="datetime" />
+          <Property Name="Punch Out Time (Break Time) " Type="datetime" />
+          <Property Name="Punch In Time (Break Time) " Type="datetime" />
+          <Property Name="Punch Out Time" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work Time" Type="datetime" />
+          <Property Name="Break duration" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="Radnici" Type="nvarchar" MaxLength="255" />
+          <Property Name="Iskljuci" Type="nvarchar" MaxLength="255" />
+          <Property Name="Pokazatelj" Type="nvarchar" MaxLength="255" />
+          <Property Name="Menadzer" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <Association Name="FK_AccessLog_Cardholder">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="AccessLog">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Card_Cardholder">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MojaModelStoreContainer">
+          <EntitySet Name="AccessLog" EntityType="Self.AccessLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cardholder" EntityType="Self.Cardholder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessLog_Cardholder" Association="Self.FK_AccessLog_Cardholder">
+            <End Role="Cardholder" EntitySet="Cardholder" />
+            <End Role="AccessLog" EntitySet="AccessLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Card_Cardholder" Association="Self.FK_Card_Cardholder">
+            <End Role="Cardholder" EntitySet="Cardholder" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CardType" Type="Int32" />
+          <Property Name="ControllerID" Type="Int32" />
+          <Property Name="Direction" Type="Int32" Nullable="false" />
+          <Property Name="LocalTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardholderID" Type="Int32" />
+          <NavigationProperty Name="Cardholder" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="AccessLog" ToRole="Cardholder" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="CardNoIntCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CardholderID" Type="Int32" />
+          <NavigationProperty Name="Cardholder" Relationship="Self.FK__Card__Cardholder__2645B050" FromRole="Card" ToRole="Cardholder" />
+        </EntityType>
+        <EntityType Name="Cardholder">
+          <Key>
+            <PropertyRef Name="CardholderID" />
+          </Key>
+          <Property Name="CardholderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <NavigationProperty Name="AccessLogs" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="Cardholder" ToRole="AccessLog" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK__Card__Cardholder__2645B050" FromRole="Cardholder" ToRole="Card" />
+        </EntityType>
+        <Association Name="FK__AccessLog__Cardh__29221CFB">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="AccessLog">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Card__Cardholder__2645B050">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MojaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessLogs" EntityType="Self.AccessLog" />
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="Cardholders" EntityType="Self.Cardholder" />
+          <AssociationSet Name="FK__AccessLog__Cardh__29221CFB" Association="Self.FK__AccessLog__Cardh__29221CFB">
+            <End Role="Cardholder" EntitySet="Cardholders" />
+            <End Role="AccessLog" EntitySet="AccessLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Card__Cardholder__2645B050" Association="Self.FK__Card__Cardholder__2645B050">
+            <End Role="Cardholder" EntitySet="Cardholders" />
+            <End Role="Card" EntitySet="Cards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MojaModelStoreContainer" CdmEntityContainer="MojaEntities">
+          <EntitySetMapping Name="AccessLogs">
+            <EntityTypeMapping TypeName="MojaModel.AccessLog">
+              <MappingFragment StoreEntitySet="AccessLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="ControllerID" ColumnName="ControllerID" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="LocalTime" ColumnName="LocalTime" />
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="MojaModel.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="CardNoIntCode" ColumnName="CardNoIntCode" />
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cardholders">
+            <EntityTypeMapping TypeName="MojaModel.Cardholder">
+              <MappingFragment StoreEntitySet="Cardholder">
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
