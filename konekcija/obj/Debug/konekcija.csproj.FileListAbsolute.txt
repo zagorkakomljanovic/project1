@@ -22,3 +22,4 @@ C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.Sql
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.xml
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.CopyComplete
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.Form2.resources
