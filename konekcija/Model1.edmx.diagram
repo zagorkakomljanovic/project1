@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f377b07cae144da9d95f34d2f6b5605" Name="Diagram1" ZoomLevel="125">
+        <EntityTypeShape EntityType="MojaModel.Card" Width="1.5" PointX="2.75" PointY="1.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="MojaModel.Cardholder" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="false" />
+        <AssociationConnector Association="MojaModel.FK_Card_Cardholder1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -7,3 +7,18 @@ C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\D
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.exe
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.pdb
 C:\Users\Control\Documents\Visual Studio 2017\Projects\konekcija\konekcija\obj\Debug\konekcija.csprojResolveAssemblyReference.cache
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\konekcija.exe.config
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\konekcija.exe
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\konekcija.pdb
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csprojAssemblyReference.cache
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.Form1.resources
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.Properties.Resources.resources
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.GenerateResource.cache
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.CoreCompileInputs.cache
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.exe
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.pdb
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.dll
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.xml
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.CopyComplete

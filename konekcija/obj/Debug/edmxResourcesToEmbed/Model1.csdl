@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="Int32" Nullable="false" />
+    <Property Name="CardholderID" Type="Int32" Nullable="false" />
+    <Property Name="CardNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CardNoIntCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodeType" Type="Byte" Nullable="false" />
+    <Property Name="CardType" Type="Byte" Nullable="false" />
+    <Property Name="CardStatus" Type="Byte" Nullable="false" />
+    <Property Name="ActivationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeactivationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Deactivation" Type="Boolean" Nullable="false" />
+    <Property Name="AccessGroupID" Type="Int32" Nullable="false" />
+    <Property Name="PinCode" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Privilege" Type="Byte" Nullable="false" />
+    <Property Name="AreaID" Type="Int32" />
+    <Property Name="FingerprintExist" Type="Int32" Nullable="false" />
+    <Property Name="DataGroupID" Type="Int32" Nullable="false" />
+    <Property Name="DisableLockCard" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cardholder" Relationship="Self.FK_Card_Cardholder1" FromRole="Card" ToRole="Cardholder" />
+  </EntityType>
+  <EntityType Name="Cardholder">
+    <Key>
+      <PropertyRef Name="CardholderID" />
+    </Key>
+    <Property Name="CardholderID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SendSMSMessage" Type="Boolean" Nullable="false" />
+    <Property Name="SMSMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="Boolean" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_ZipCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_EMail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_HomePage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Home_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JobTitle" Type="String" MaxLength="52" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Department" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_Ext" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_CompanyName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_ZipCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_EMail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_HomePage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Office_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine04" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine05" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine06" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine07" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine08" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine09" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefine10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AreaID" Type="Int32" />
+    <Property Name="AD_GUID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fingerprint01" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint02" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint03" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint04" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint05" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint06" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint07" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint08" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint09" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Fingerprint10" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AntiDuressID" Type="Int32" Nullable="false" />
+    <Property Name="CardholderType" Type="Int32" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataGroupID" Type="Int32" Nullable="false" />
+    <Property Name="SeparationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Division" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cards" Relationship="Self.FK_Card_Cardholder1" FromRole="Cardholder" ToRole="Card" />
+  </EntityType>
+  <Association Name="FK_Card_Cardholder1">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MojaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cards" EntityType="Self.Card" />
+    <EntitySet Name="Cardholders" EntityType="Self.Cardholder" />
+    <AssociationSet Name="FK_Card_Cardholder1" Association="Self.FK_Card_Cardholder1">
+      <End Role="Cardholder" EntitySet="Cardholders" />
+      <End Role="Card" EntitySet="Cards" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

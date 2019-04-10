@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MojaModelStoreContainer" CdmEntityContainer="MojaEntities">
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="MojaModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+          <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+          <ScalarProperty Name="CardNoIntCode" ColumnName="CardNoIntCode" />
+          <ScalarProperty Name="CodeType" ColumnName="CodeType" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="CardStatus" ColumnName="CardStatus" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+          <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
+          <ScalarProperty Name="Deactivation" ColumnName="Deactivation" />
+          <ScalarProperty Name="AccessGroupID" ColumnName="AccessGroupID" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="FingerprintExist" ColumnName="FingerprintExist" />
+          <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+          <ScalarProperty Name="DisableLockCard" ColumnName="DisableLockCard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cardholders">
+      <EntityTypeMapping TypeName="MojaModel.Cardholder">
+        <MappingFragment StoreEntitySet="Cardholder">
+          <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SendSMSMessage" ColumnName="SendSMSMessage" />
+          <ScalarProperty Name="SMSMessage" ColumnName="SMSMessage" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Home_Phone" ColumnName="Home_Phone" />
+          <ScalarProperty Name="Home_Fax" ColumnName="Home_Fax" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="Home_ZipCode" ColumnName="Home_ZipCode" />
+          <ScalarProperty Name="Home_Address" ColumnName="Home_Address" />
+          <ScalarProperty Name="Home_EMail" ColumnName="Home_EMail" />
+          <ScalarProperty Name="Home_HomePage" ColumnName="Home_HomePage" />
+          <ScalarProperty Name="Home_Notes" ColumnName="Home_Notes" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Office" ColumnName="Office" />
+          <ScalarProperty Name="Office_Phone" ColumnName="Office_Phone" />
+          <ScalarProperty Name="Office_Ext" ColumnName="Office_Ext" />
+          <ScalarProperty Name="Office_Fax" ColumnName="Office_Fax" />
+          <ScalarProperty Name="Office_CompanyName" ColumnName="Office_CompanyName" />
+          <ScalarProperty Name="Office_ZipCode" ColumnName="Office_ZipCode" />
+          <ScalarProperty Name="Office_Address" ColumnName="Office_Address" />
+          <ScalarProperty Name="Office_EMail" ColumnName="Office_EMail" />
+          <ScalarProperty Name="Office_HomePage" ColumnName="Office_HomePage" />
+          <ScalarProperty Name="Office_Notes" ColumnName="Office_Notes" />
+          <ScalarProperty Name="UserDefine01" ColumnName="UserDefine01" />
+          <ScalarProperty Name="UserDefine02" ColumnName="UserDefine02" />
+          <ScalarProperty Name="UserDefine03" ColumnName="UserDefine03" />
+          <ScalarProperty Name="UserDefine04" ColumnName="UserDefine04" />
+          <ScalarProperty Name="UserDefine05" ColumnName="UserDefine05" />
+          <ScalarProperty Name="UserDefine06" ColumnName="UserDefine06" />
+          <ScalarProperty Name="UserDefine07" ColumnName="UserDefine07" />
+          <ScalarProperty Name="UserDefine08" ColumnName="UserDefine08" />
+          <ScalarProperty Name="UserDefine09" ColumnName="UserDefine09" />
+          <ScalarProperty Name="UserDefine10" ColumnName="UserDefine10" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="AD_GUID" ColumnName="AD_GUID" />
+          <ScalarProperty Name="Fingerprint01" ColumnName="Fingerprint01" />
+          <ScalarProperty Name="Fingerprint02" ColumnName="Fingerprint02" />
+          <ScalarProperty Name="Fingerprint03" ColumnName="Fingerprint03" />
+          <ScalarProperty Name="Fingerprint04" ColumnName="Fingerprint04" />
+          <ScalarProperty Name="Fingerprint05" ColumnName="Fingerprint05" />
+          <ScalarProperty Name="Fingerprint06" ColumnName="Fingerprint06" />
+          <ScalarProperty Name="Fingerprint07" ColumnName="Fingerprint07" />
+          <ScalarProperty Name="Fingerprint08" ColumnName="Fingerprint08" />
+          <ScalarProperty Name="Fingerprint09" ColumnName="Fingerprint09" />
+          <ScalarProperty Name="Fingerprint10" ColumnName="Fingerprint10" />
+          <ScalarProperty Name="AntiDuressID" ColumnName="AntiDuressID" />
+          <ScalarProperty Name="CardholderType" ColumnName="CardholderType" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+          <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="int" Nullable="false" />
+          <Property Name="CardholderID" Type="int" Nullable="false" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="CardNoIntCode" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CodeType" Type="tinyint" Nullable="false" />
+          <Property Name="CardType" Type="tinyint" Nullable="false" />
+          <Property Name="CardStatus" Type="tinyint" Nullable="false" />
+          <Property Name="ActivationDate" Type="datetime" Nullable="false" />
+          <Property Name="DeactivationDate" Type="datetime" Nullable="false" />
+          <Property Name="Deactivation" Type="bit" Nullable="false" />
+          <Property Name="AccessGroupID" Type="int" Nullable="false" />
+          <Property Name="PinCode" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Privilege" Type="tinyint" Nullable="false" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="FingerprintExist" Type="int" Nullable="false" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="DisableLockCard" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cardholder">
+          <Key>
+            <PropertyRef Name="CardholderID" />
+          </Key>
+          <Property Name="CardholderID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SendSMSMessage" Type="bit" Nullable="false" />
+          <Property Name="SMSMessage" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Birthday" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Home_Phone" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Home_Fax" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Home_ZipCode" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Home_Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Home_EMail" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Home_HomePage" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Home_Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="52" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office_Phone" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office_Ext" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office_Fax" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office_CompanyName" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Office_ZipCode" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Office_Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Office_EMail" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Office_HomePage" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Office_Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserDefine01" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine02" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine03" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine04" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine05" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine06" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine07" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine08" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine09" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserDefine10" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="AD_GUID" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="Fingerprint01" Type="image" />
+          <Property Name="Fingerprint02" Type="image" />
+          <Property Name="Fingerprint03" Type="image" />
+          <Property Name="Fingerprint04" Type="image" />
+          <Property Name="Fingerprint05" Type="image" />
+          <Property Name="Fingerprint06" Type="image" />
+          <Property Name="Fingerprint07" Type="image" />
+          <Property Name="Fingerprint08" Type="image" />
+          <Property Name="Fingerprint09" Type="image" />
+          <Property Name="Fingerprint10" Type="image" />
+          <Property Name="AntiDuressID" Type="int" Nullable="false" />
+          <Property Name="CardholderType" Type="int" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataGroupID" Type="int" Nullable="false" />
+          <Property Name="SeparationDate" Type="datetime" Nullable="false" />
+          <Property Name="Division" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Card_Cardholder1">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MojaModelStoreContainer">
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cardholder" EntityType="Self.Cardholder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Card_Cardholder1" Association="Self.FK_Card_Cardholder1">
+            <End Role="Cardholder" EntitySet="Cardholder" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Int32" Nullable="false" />
+          <Property Name="CardholderID" Type="Int32" Nullable="false" />
+          <Property Name="CardNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardNoIntCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodeType" Type="Byte" Nullable="false" />
+          <Property Name="CardType" Type="Byte" Nullable="false" />
+          <Property Name="CardStatus" Type="Byte" Nullable="false" />
+          <Property Name="ActivationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeactivationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deactivation" Type="Boolean" Nullable="false" />
+          <Property Name="AccessGroupID" Type="Int32" Nullable="false" />
+          <Property Name="PinCode" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Privilege" Type="Byte" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" />
+          <Property Name="FingerprintExist" Type="Int32" Nullable="false" />
+          <Property Name="DataGroupID" Type="Int32" Nullable="false" />
+          <Property Name="DisableLockCard" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cardholder" Relationship="Self.FK_Card_Cardholder1" FromRole="Card" ToRole="Cardholder" />
+        </EntityType>
+        <EntityType Name="Cardholder">
+          <Key>
+            <PropertyRef Name="CardholderID" />
+          </Key>
+          <Property Name="CardholderID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendSMSMessage" Type="Boolean" Nullable="false" />
+          <Property Name="SMSMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmployeeID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_ZipCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_EMail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_HomePage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="52" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Department" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_Ext" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_CompanyName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_ZipCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_EMail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_HomePage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Office_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine01" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine02" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine03" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine04" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine05" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine06" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine07" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine08" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine09" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserDefine10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" />
+          <Property Name="AD_GUID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fingerprint01" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint02" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint03" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint04" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint05" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint06" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint07" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint08" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint09" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Fingerprint10" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AntiDuressID" Type="Int32" Nullable="false" />
+          <Property Name="CardholderType" Type="Int32" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataGroupID" Type="Int32" Nullable="false" />
+          <Property Name="SeparationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Division" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Card_Cardholder1" FromRole="Cardholder" ToRole="Card" />
+        </EntityType>
+        <Association Name="FK_Card_Cardholder1">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MojaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="Cardholders" EntityType="Self.Cardholder" />
+          <AssociationSet Name="FK_Card_Cardholder1" Association="Self.FK_Card_Cardholder1">
+            <End Role="Cardholder" EntitySet="Cardholders" />
+            <End Role="Card" EntitySet="Cards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MojaModelStoreContainer" CdmEntityContainer="MojaEntities">
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="MojaModel.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="CardNoIntCode" ColumnName="CardNoIntCode" />
+                <ScalarProperty Name="CodeType" ColumnName="CodeType" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="CardStatus" ColumnName="CardStatus" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
+                <ScalarProperty Name="Deactivation" ColumnName="Deactivation" />
+                <ScalarProperty Name="AccessGroupID" ColumnName="AccessGroupID" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="FingerprintExist" ColumnName="FingerprintExist" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="DisableLockCard" ColumnName="DisableLockCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cardholders">
+            <EntityTypeMapping TypeName="MojaModel.Cardholder">
+              <MappingFragment StoreEntitySet="Cardholder">
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SendSMSMessage" ColumnName="SendSMSMessage" />
+                <ScalarProperty Name="SMSMessage" ColumnName="SMSMessage" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Home_Phone" ColumnName="Home_Phone" />
+                <ScalarProperty Name="Home_Fax" ColumnName="Home_Fax" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Home_ZipCode" ColumnName="Home_ZipCode" />
+                <ScalarProperty Name="Home_Address" ColumnName="Home_Address" />
+                <ScalarProperty Name="Home_EMail" ColumnName="Home_EMail" />
+                <ScalarProperty Name="Home_HomePage" ColumnName="Home_HomePage" />
+                <ScalarProperty Name="Home_Notes" ColumnName="Home_Notes" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Office_Phone" ColumnName="Office_Phone" />
+                <ScalarProperty Name="Office_Ext" ColumnName="Office_Ext" />
+                <ScalarProperty Name="Office_Fax" ColumnName="Office_Fax" />
+                <ScalarProperty Name="Office_CompanyName" ColumnName="Office_CompanyName" />
+                <ScalarProperty Name="Office_ZipCode" ColumnName="Office_ZipCode" />
+                <ScalarProperty Name="Office_Address" ColumnName="Office_Address" />
+                <ScalarProperty Name="Office_EMail" ColumnName="Office_EMail" />
+                <ScalarProperty Name="Office_HomePage" ColumnName="Office_HomePage" />
+                <ScalarProperty Name="Office_Notes" ColumnName="Office_Notes" />
+                <ScalarProperty Name="UserDefine01" ColumnName="UserDefine01" />
+                <ScalarProperty Name="UserDefine02" ColumnName="UserDefine02" />
+                <ScalarProperty Name="UserDefine03" ColumnName="UserDefine03" />
+                <ScalarProperty Name="UserDefine04" ColumnName="UserDefine04" />
+                <ScalarProperty Name="UserDefine05" ColumnName="UserDefine05" />
+                <ScalarProperty Name="UserDefine06" ColumnName="UserDefine06" />
+                <ScalarProperty Name="UserDefine07" ColumnName="UserDefine07" />
+                <ScalarProperty Name="UserDefine08" ColumnName="UserDefine08" />
+                <ScalarProperty Name="UserDefine09" ColumnName="UserDefine09" />
+                <ScalarProperty Name="UserDefine10" ColumnName="UserDefine10" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="AD_GUID" ColumnName="AD_GUID" />
+                <ScalarProperty Name="Fingerprint01" ColumnName="Fingerprint01" />
+                <ScalarProperty Name="Fingerprint02" ColumnName="Fingerprint02" />
+                <ScalarProperty Name="Fingerprint03" ColumnName="Fingerprint03" />
+                <ScalarProperty Name="Fingerprint04" ColumnName="Fingerprint04" />
+                <ScalarProperty Name="Fingerprint05" ColumnName="Fingerprint05" />
+                <ScalarProperty Name="Fingerprint06" ColumnName="Fingerprint06" />
+                <ScalarProperty Name="Fingerprint07" ColumnName="Fingerprint07" />
+                <ScalarProperty Name="Fingerprint08" ColumnName="Fingerprint08" />
+                <ScalarProperty Name="Fingerprint09" ColumnName="Fingerprint09" />
+                <ScalarProperty Name="Fingerprint10" ColumnName="Fingerprint10" />
+                <ScalarProperty Name="AntiDuressID" ColumnName="AntiDuressID" />
+                <ScalarProperty Name="CardholderType" ColumnName="CardholderType" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="DataGroupID" ColumnName="DataGroupID" />
+                <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="int" Nullable="false" />
+    <Property Name="CardholderID" Type="int" Nullable="false" />
+    <Property Name="CardNo" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CardNoIntCode" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="CodeType" Type="tinyint" Nullable="false" />
+    <Property Name="CardType" Type="tinyint" Nullable="false" />
+    <Property Name="CardStatus" Type="tinyint" Nullable="false" />
+    <Property Name="ActivationDate" Type="datetime" Nullable="false" />
+    <Property Name="DeactivationDate" Type="datetime" Nullable="false" />
+    <Property Name="Deactivation" Type="bit" Nullable="false" />
+    <Property Name="AccessGroupID" Type="int" Nullable="false" />
+    <Property Name="PinCode" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Privilege" Type="tinyint" Nullable="false" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="FingerprintExist" Type="int" Nullable="false" />
+    <Property Name="DataGroupID" Type="int" Nullable="false" />
+    <Property Name="DisableLockCard" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cardholder">
+    <Key>
+      <PropertyRef Name="CardholderID" />
+    </Key>
+    <Property Name="CardholderID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SendSMSMessage" Type="bit" Nullable="false" />
+    <Property Name="SMSMessage" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" Nullable="false" />
+    <Property Name="EmployeeID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Home_Phone" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Home_Fax" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="MobilePhone" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Home_ZipCode" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Home_Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Home_EMail" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Home_HomePage" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Home_Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="JobTitle" Type="nvarchar" MaxLength="52" Nullable="false" />
+    <Property Name="HireDate" Type="datetime" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office_Phone" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office_Ext" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office_Fax" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office_CompanyName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Office_ZipCode" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Office_Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Office_EMail" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Office_HomePage" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Office_Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserDefine01" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine02" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine03" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine04" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine05" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine06" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine07" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine08" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine09" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDefine10" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="AD_GUID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="Fingerprint01" Type="image" />
+    <Property Name="Fingerprint02" Type="image" />
+    <Property Name="Fingerprint03" Type="image" />
+    <Property Name="Fingerprint04" Type="image" />
+    <Property Name="Fingerprint05" Type="image" />
+    <Property Name="Fingerprint06" Type="image" />
+    <Property Name="Fingerprint07" Type="image" />
+    <Property Name="Fingerprint08" Type="image" />
+    <Property Name="Fingerprint09" Type="image" />
+    <Property Name="Fingerprint10" Type="image" />
+    <Property Name="AntiDuressID" Type="int" Nullable="false" />
+    <Property Name="CardholderType" Type="int" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataGroupID" Type="int" Nullable="false" />
+    <Property Name="SeparationDate" Type="datetime" Nullable="false" />
+    <Property Name="Division" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Card_Cardholder1">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MojaModelStoreContainer">
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cardholder" EntityType="Self.Cardholder" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Card_Cardholder1" Association="Self.FK_Card_Cardholder1">
+      <End Role="Cardholder" EntitySet="Cardholder" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

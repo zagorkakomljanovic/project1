@@ -24,7 +24,7 @@ namespace konekcija
             // inicijalizacija same Forme, svih komponenata
             InitializeComponent();
             //dodavanje Event handlera na klik dugmeta button1 
-            Button1.Click += new EventHandler(Button1_Click);
+            Button1.Click += new EventHandler(Button1_Click);            
         }
 
         //akcije na klik dugmeta
@@ -171,6 +171,13 @@ namespace konekcija
             return tables;
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 fm = new Form2();
+            fm.Show();           
+                
         }
     }
 }
