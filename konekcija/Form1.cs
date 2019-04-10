@@ -160,9 +160,9 @@ namespace konekcija
                     // ako broj redova NIJE isti i ako je m1 u accessu veci od m2u SQL kopiraju se oni koji su novi   
                     if (n1 != n2 && m1 > m2)
                     {
-                        MessageBox.Show("ima novih kardholdera,kopira se");
+                        MessageBox.Show("ima novih logova, kopira se");
                         // iz  access tablel izvlace se podaci(korisnici) koji su novi 
-                        var commandSourceData = new OleDbCommand("Select LogID, CardCode, CardType , CardholderID , ControllerID , Direction , LocalTime from " + tbl + " where LogID <=" + @m1 + " and LogID >" + @m2, sourceConnectionLog);
+                        var commandSourceData = new OleDbCommand("Select LogID, CardCode, CardType  , ControllerID , Direction , LocalTime, CardholderID from " + tbl + " where LogID <=" + @m1 + " and LogID >" + @m2, sourceConnectionLog);
 
                         // ispisuje se CardholderID koji se dodaje u tabelu
                         var commandSourceData3 = new OleDbCommand("Select LogID from " + tbl + " where LogID <=" + @m1 + "and LogID >" + @m2, sourceConnectionLog);
@@ -223,14 +223,14 @@ namespace konekcija
                 {
                     //ako je tabela u SQL-u NIJE prazna
                     //problem -----> ako je prazna ne moze da se nadje maximalni CardholderID 
-                    if (n2 != 0)
+                    if (n2 >2)
                     {
                         //ako je prazna ne moze da se nadje maximalni CardholderID , pa se tek sada racuna
                         int m2 = (int)commandDestinationData1.ExecuteScalar();
                         MessageBox.Show(" maksimalni " + m2 + " ,broj redova " + n2);
 
                         // ako broj redova NIJE isti i ako je m1 u accessu veci od m2u SQL kopiraju se oni koji su novi   
-                        if (n1 != n2 && m1 > m2)
+                        if ( m1 > m2)
                         {
                             MessageBox.Show("ima novih kardholdera,kopira se");
                             // iz  access tablel izvlace se podaci(korisnici) koji su novi 
@@ -293,11 +293,11 @@ namespace konekcija
                             // MessageBox.Show(" "+rdr[0]); 
                             sourceLista.Add(Sourcerdr.GetInt32(0));
                         }
-                        //for (int i = 0; i < sourceLista.Count; i++)
-                        //MessageBox.Show(" " + sourceLista[i]);
+                    //for (int i = 0; i < sourceLista.Count; i++)
+                    //MessageBox.Show(" " + sourceLista[i]);
 
-                        //svi oni koji su izbrisani iz access baze, tj oni kojih ima u sql ali ne u access,oni se posle brisu, izuzetak je CardholderID=-1 jer on je za neregistrovane korisnike kartica
-                        var firstNotSecond = lista.Except(sourceLista).ToList();
+                    //svi oni koji su izbrisani iz access baze, tj oni kojih ima u sql ali ne u access,oni se posle brisu, izuzetak je CardholderID=-1 i CardholderID=0 jer on je za neregistrovane korisnike kartica
+                    var firstNotSecond = lista.Except(sourceLista).ToList();
                         MessageBox.Show(" proslo");
                         //var commandDestinationData4= new SqlCommand("Select * from "+tbl, destinationConnection);
                         Sourcerdr.Close();
@@ -306,7 +306,7 @@ namespace konekcija
                         SqlDataReader rdr1 = null;
                         for (int i = 0; i < firstNotSecond.Count; i++)
                         {
-                        if (firstNotSecond[i] != -1)
+                        if (firstNotSecond[i] != -1 && firstNotSecond[i] != 0)
                         {
                             MessageBox.Show(" " + firstNotSecond[i]);
                             int n = (int)firstNotSecond[i];
