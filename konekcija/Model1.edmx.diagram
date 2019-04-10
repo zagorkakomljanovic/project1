@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cf5cf3fa09141ebbfbc864f3ff86e28" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="MojaModel.AccessLog" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MojaModel.Card" Width="1.5" PointX="3.125" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MojaModel.Cardholder" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="MojaModel.FK__AccessLog__Cardh__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="MojaModel.FK__Card__Cardholder__2645B050" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

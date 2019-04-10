@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccessLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CardCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardType" Type="Int32" />
+    <Property Name="ControllerID" Type="Int32" />
+    <Property Name="Direction" Type="Int32" Nullable="false" />
+    <Property Name="LocalTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CardholderID" Type="Int32" />
+    <NavigationProperty Name="Cardholder" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="AccessLog" ToRole="Cardholder" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CardNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CardNoIntCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CardholderID" Type="Int32" />
+    <NavigationProperty Name="Cardholder" Relationship="Self.FK__Card__Cardholder__2645B050" FromRole="Card" ToRole="Cardholder" />
+  </EntityType>
+  <EntityType Name="Cardholder">
+    <Key>
+      <PropertyRef Name="CardholderID" />
+    </Key>
+    <Property Name="CardholderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <NavigationProperty Name="AccessLogs" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="Cardholder" ToRole="AccessLog" />
+    <NavigationProperty Name="Cards" Relationship="Self.FK__Card__Cardholder__2645B050" FromRole="Cardholder" ToRole="Card" />
+  </EntityType>
+  <Association Name="FK__AccessLog__Cardh__29221CFB">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+    <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="AccessLog">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card__Cardholder__2645B050">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MojaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccessLogs" EntityType="Self.AccessLog" />
+    <EntitySet Name="Cards" EntityType="Self.Card" />
+    <EntitySet Name="Cardholders" EntityType="Self.Cardholder" />
+    <AssociationSet Name="FK__AccessLog__Cardh__29221CFB" Association="Self.FK__AccessLog__Cardh__29221CFB">
+      <End Role="Cardholder" EntitySet="Cardholders" />
+      <End Role="AccessLog" EntitySet="AccessLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card__Cardholder__2645B050" Association="Self.FK__Card__Cardholder__2645B050">
+      <End Role="Cardholder" EntitySet="Cardholders" />
+      <End Role="Card" EntitySet="Cards" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

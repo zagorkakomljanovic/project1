@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CardCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CardType" Type="int" />
+    <Property Name="ControllerID" Type="int" />
+    <Property Name="Direction" Type="int" Nullable="false" />
+    <Property Name="LocalTime" Type="datetime" Nullable="false" />
+    <Property Name="CardholderID" Type="int" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CardNo" Type="nvarchar" MaxLength="32" />
+    <Property Name="CardNoIntCode" Type="nvarchar" MaxLength="40" />
+    <Property Name="CardholderID" Type="int" />
+  </EntityType>
+  <EntityType Name="Cardholder">
+    <Key>
+      <PropertyRef Name="CardholderID" />
+    </Key>
+    <Property Name="CardholderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="150" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Gender" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Moja.dbo.menadzeri$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="menadzeri$">
+          <Property Name="Rizzi Vicenzo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Alfio Miceli" Type="nvarchar" MaxLength="255" />
+          <Property Name="n" Type="nvarchar" MaxLength="255" />
+          <Property Name="internal" Type="nvarchar" MaxLength="255" />
+          <Property Name="F5" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Moja.dbo.nova' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="template$">
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumLog" Type="float" />
+          <Property Name="SumDirections" Type="float" />
+          <Property Name="Punch In Time" Type="datetime" />
+          <Property Name="Punch Out Time (Break Time) " Type="datetime" />
+          <Property Name="Punch In Time (Break Time) " Type="datetime" />
+          <Property Name="Punch Out Time" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work Time" Type="datetime" />
+          <Property Name="Break duration" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="Radnici" Type="nvarchar" MaxLength="255" />
+          <Property Name="Iskljuci" Type="nvarchar" MaxLength="255" />
+          <Property Name="Pokazatelj" Type="nvarchar" MaxLength="255" />
+          <Property Name="Menadzer" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <Association Name="FK_AccessLog_Cardholder">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+    <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="AccessLog">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Card_Cardholder">
+    <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cardholder">
+        <PropertyRef Name="CardholderID" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="CardholderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MojaModelStoreContainer">
+    <EntitySet Name="AccessLog" EntityType="Self.AccessLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cardholder" EntityType="Self.Cardholder" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AccessLog_Cardholder" Association="Self.FK_AccessLog_Cardholder">
+      <End Role="Cardholder" EntitySet="Cardholder" />
+      <End Role="AccessLog" EntitySet="AccessLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Card_Cardholder" Association="Self.FK_Card_Cardholder">
+      <End Role="Cardholder" EntitySet="Cardholder" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
