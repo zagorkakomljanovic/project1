@@ -39,3 +39,18 @@ C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.Co
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.csproj.CopyComplete
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.exe
 C:\Users\Control 2\Documents\GitHub\novo\konekcija\obj\Debug\konekcija.pdb
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.exe.config
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.exe
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\konekcija.pdb
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\EntityFramework.dll
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\EntityFramework.xml
+C:\Users\Control\Desktop\project\project1\konekcija\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.csprojResolveAssemblyReference.cache
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Form1.resources
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Form2.resources
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Properties.Resources.resources
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.csproj.GenerateResource.Cache
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.exe
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.pdb
+C:\Users\Control\Desktop\project\project1\konekcija\obj\Debug\konekcija.Form3.resources

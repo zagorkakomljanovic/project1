@@ -15,7 +15,7 @@ namespace konekcija
         public Form1()
         {
             InitializeComponent();
-            Button1.Click += new EventHandler(Button1_Click);
+            BAZA.Click += new EventHandler(Button1_Click);
         }
         private void Button1_Click(object sender, EventArgs e)
 
@@ -131,6 +131,12 @@ namespace konekcija
         private void button2_Click(object sender, EventArgs e)
         {
             Form form = new Form2();
+            form.ShowDialog();
+        }
+
+        private void btnTimeReport_Click(object sender, EventArgs e)
+        {
+            Form form = new Form3();
             form.ShowDialog();
         }
     }

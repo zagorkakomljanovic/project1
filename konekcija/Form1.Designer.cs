@@ -28,50 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Button1 = new System.Windows.Forms.Button();
+            this.BAZA = new System.Windows.Forms.Button();
             this.labela = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnTimeReport = new System.Windows.Forms.Button();
+            this.lblTimeReport = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Button1
+            // BAZA
             // 
-            this.Button1.Location = new System.Drawing.Point(103, 78);
-            this.Button1.Margin = new System.Windows.Forms.Padding(4);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(168, 57);
-            this.Button1.TabIndex = 0;
-            this.Button1.Text = "Button1";
-            this.Button1.UseVisualStyleBackColor = true;
+            this.BAZA.Location = new System.Drawing.Point(26, 25);
+            this.BAZA.Name = "BAZA";
+            this.BAZA.Size = new System.Drawing.Size(126, 46);
+            this.BAZA.TabIndex = 0;
+            this.BAZA.Text = "Button1";
+            this.BAZA.UseVisualStyleBackColor = true;
             // 
             // labela
             // 
             this.labela.AutoSize = true;
-            this.labela.Location = new System.Drawing.Point(119, 206);
-            this.labela.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labela.Location = new System.Drawing.Point(42, 110);
             this.labela.Name = "labela";
-            this.labela.Size = new System.Drawing.Size(46, 17);
+            this.labela.Size = new System.Drawing.Size(77, 13);
             this.labela.TabIndex = 2;
-            this.labela.Text = "label1";
+            this.labela.Text = "miskova labela";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(165, 261);
+            this.button2.Location = new System.Drawing.Point(177, 110);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(56, 19);
             this.button2.TabIndex = 3;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnTimeReport
+            // 
+            this.btnTimeReport.Location = new System.Drawing.Point(181, 174);
+            this.btnTimeReport.Name = "btnTimeReport";
+            this.btnTimeReport.Size = new System.Drawing.Size(91, 41);
+            this.btnTimeReport.TabIndex = 4;
+            this.btnTimeReport.Text = "btnTimeReport";
+            this.btnTimeReport.UseVisualStyleBackColor = true;
+            this.btnTimeReport.Click += new System.EventHandler(this.btnTimeReport_Click);
+            // 
+            // lblTimeReport
+            // 
+            this.lblTimeReport.AutoSize = true;
+            this.lblTimeReport.Location = new System.Drawing.Point(47, 191);
+            this.lblTimeReport.Name = "lblTimeReport";
+            this.lblTimeReport.Size = new System.Drawing.Size(72, 13);
+            this.lblTimeReport.TabIndex = 5;
+            this.lblTimeReport.Text = "lblTimeReport";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 321);
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.lblTimeReport);
+            this.Controls.Add(this.btnTimeReport);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.labela);
-            this.Controls.Add(this.Button1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.BAZA);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -81,9 +102,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Button1;
+        private System.Windows.Forms.Button BAZA;
         private System.Windows.Forms.Label labela;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTimeReport;
+        private System.Windows.Forms.Label lblTimeReport;
     }
 }
 
