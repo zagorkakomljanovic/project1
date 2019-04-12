@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BAZA = new System.Windows.Forms.Button();
+            this.Button1 = new System.Windows.Forms.Button();
             this.labela = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnTimeReport = new System.Windows.Forms.Button();
             this.lblTimeReport = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // BAZA
+            // Button1
             // 
-            this.BAZA.Location = new System.Drawing.Point(26, 25);
-            this.BAZA.Name = "BAZA";
-            this.BAZA.Size = new System.Drawing.Size(126, 46);
-            this.BAZA.TabIndex = 0;
-            this.BAZA.Text = "Button1";
-            this.BAZA.UseVisualStyleBackColor = true;
+            this.Button1.Location = new System.Drawing.Point(26, 25);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(126, 46);
+            this.Button1.TabIndex = 0;
+            this.Button1.Text = "Button1";
+            this.Button1.UseVisualStyleBackColor = true;
             // 
             // labela
             // 
@@ -92,7 +92,7 @@
             this.Controls.Add(this.btnTimeReport);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.labela);
-            this.Controls.Add(this.BAZA);
+            this.Controls.Add(this.Button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -102,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BAZA;
+        private System.Windows.Forms.Button Button1;
         private System.Windows.Forms.Label labela;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnTimeReport;
