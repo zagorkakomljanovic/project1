@@ -35,20 +35,20 @@
             this.cboxCARDHOLDER = new System.Windows.Forms.ComboBox();
             this.lblRadnik = new System.Windows.Forms.Label();
             this.dgCHECKLIST = new System.Windows.Forms.DataGridView();
+            this.directionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.localTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accessLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDO = new System.Windows.Forms.Label();
             this.lblOD = new System.Windows.Forms.Label();
-            this.directionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.localTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accessLogBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cardholderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgCHECKLIST)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,14 +72,15 @@
             // 
             // cboxCARDHOLDER
             // 
-            this.cboxCARDHOLDER.DisplayMember = "NAME";
+            this.cboxCARDHOLDER.DataSource = this.cardholderBindingSource;
+            this.cboxCARDHOLDER.DisplayMember = "Name";
             this.cboxCARDHOLDER.FormattingEnabled = true;
             this.cboxCARDHOLDER.Location = new System.Drawing.Point(77, 20);
             this.cboxCARDHOLDER.Margin = new System.Windows.Forms.Padding(2);
             this.cboxCARDHOLDER.Name = "cboxCARDHOLDER";
             this.cboxCARDHOLDER.Size = new System.Drawing.Size(191, 21);
             this.cboxCARDHOLDER.TabIndex = 2;
-            this.cboxCARDHOLDER.ValueMember = "NAME";
+            this.cboxCARDHOLDER.ValueMember = "Name";
             this.cboxCARDHOLDER.SelectedIndexChanged += new System.EventHandler(this.cboxCARDHOLDER_SelectedIndexChanged);
             // 
             // lblRadnik
@@ -110,6 +111,22 @@
             this.dgCHECKLIST.Size = new System.Drawing.Size(1010, 372);
             this.dgCHECKLIST.TabIndex = 4;
             this.dgCHECKLIST.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCHECKLIST_CellContentClick);
+            // 
+            // directionDataGridViewTextBoxColumn
+            // 
+            this.directionDataGridViewTextBoxColumn.DataPropertyName = "Direction";
+            this.directionDataGridViewTextBoxColumn.HeaderText = "Direction";
+            this.directionDataGridViewTextBoxColumn.Name = "directionDataGridViewTextBoxColumn";
+            // 
+            // localTimeDataGridViewTextBoxColumn
+            // 
+            this.localTimeDataGridViewTextBoxColumn.DataPropertyName = "LocalTime";
+            this.localTimeDataGridViewTextBoxColumn.HeaderText = "LocalTime";
+            this.localTimeDataGridViewTextBoxColumn.Name = "localTimeDataGridViewTextBoxColumn";
+            // 
+            // accessLogBindingSource
+            // 
+            this.accessLogBindingSource.DataSource = typeof(konekcija.AccessLog);
             // 
             // groupBox1
             // 
@@ -175,22 +192,6 @@
             this.lblOD.TabIndex = 2;
             this.lblOD.Text = "Od";
             // 
-            // directionDataGridViewTextBoxColumn
-            // 
-            this.directionDataGridViewTextBoxColumn.DataPropertyName = "Direction";
-            this.directionDataGridViewTextBoxColumn.HeaderText = "Direction";
-            this.directionDataGridViewTextBoxColumn.Name = "directionDataGridViewTextBoxColumn";
-            // 
-            // localTimeDataGridViewTextBoxColumn
-            // 
-            this.localTimeDataGridViewTextBoxColumn.DataPropertyName = "LocalTime";
-            this.localTimeDataGridViewTextBoxColumn.HeaderText = "LocalTime";
-            this.localTimeDataGridViewTextBoxColumn.Name = "localTimeDataGridViewTextBoxColumn";
-            // 
-            // accessLogBindingSource
-            // 
-            this.accessLogBindingSource.DataSource = typeof(konekcija.AccessLog);
-            // 
             // cardholderBindingSource
             // 
             this.cardholderBindingSource.DataSource = typeof(konekcija.Cardholder);
@@ -208,11 +209,11 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCHECKLIST)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
