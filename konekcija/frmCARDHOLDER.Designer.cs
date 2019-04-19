@@ -33,6 +33,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.cboxCARDHOLDER = new System.Windows.Forms.ComboBox();
+            this.cardholderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblRadnik = new System.Windows.Forms.Label();
             this.dgCHECKLIST = new System.Windows.Forms.DataGridView();
             this.directionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,12 +45,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDO = new System.Windows.Forms.Label();
             this.lblOD = new System.Windows.Forms.Label();
-            this.cardholderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCHECKLIST)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -83,6 +83,10 @@
             this.cboxCARDHOLDER.ValueMember = "Name";
             this.cboxCARDHOLDER.SelectedIndexChanged += new System.EventHandler(this.cboxCARDHOLDER_SelectedIndexChanged);
             // 
+            // cardholderBindingSource
+            // 
+            this.cardholderBindingSource.DataSource = typeof(konekcija.Cardholder);
+            // 
             // lblRadnik
             // 
             this.lblRadnik.AutoSize = true;
@@ -110,7 +114,7 @@
             this.dgCHECKLIST.RowTemplate.Height = 24;
             this.dgCHECKLIST.Size = new System.Drawing.Size(1010, 372);
             this.dgCHECKLIST.TabIndex = 4;
-            this.dgCHECKLIST.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCHECKLIST_CellContentClick);
+            this.dgCHECKLIST.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgCHECKLIST_CellFormatting);
             // 
             // directionDataGridViewTextBoxColumn
             // 
@@ -192,10 +196,6 @@
             this.lblOD.TabIndex = 2;
             this.lblOD.Text = "Od";
             // 
-            // cardholderBindingSource
-            // 
-            this.cardholderBindingSource.DataSource = typeof(konekcija.Cardholder);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,13 +208,13 @@
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCHECKLIST)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accessLogBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cardholderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
