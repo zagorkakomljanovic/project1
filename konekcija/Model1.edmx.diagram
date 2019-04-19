@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="MojaModel.Cardholder" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="MojaModel.FK__AccessLog__Cardh__29221CFB" ManuallyRouted="false" />
         <AssociationConnector Association="MojaModel.FK__Card__Cardholder__2645B050" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MojaModel.Holiday" Width="1.5" PointX="3" PointY="7.75" />
+        <AssociationConnector Association="MojaModel.FK_Holiday_Cardholder" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

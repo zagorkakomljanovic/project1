@@ -28,5 +28,6 @@ namespace konekcija
         public virtual DbSet<AccessLog> AccessLogs { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Cardholder> Cardholders { get; set; }
+        public virtual DbSet<Holiday> Holidays { get; set; }
     }
 }

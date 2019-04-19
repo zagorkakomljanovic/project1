@@ -13,8 +13,8 @@
           <Property Name="CardCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CardType" Type="int" />
           <Property Name="ControllerID" Type="int" />
-          <Property Name="Direction" Type="int" Nullable="false" />
-          <Property Name="LocalTime" Type="datetime" Nullable="false" />
+          <Property Name="Direction" Type="int" />
+          <Property Name="LocalTime" Type="datetime" />
           <Property Name="CardholderID" Type="int" />
         </EntityType>
         <EntityType Name="Card">
@@ -36,39 +36,20 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="150" />
           <Property Name="Gender" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Moja.dbo.menadzeri$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="menadzeri$">
-          <Property Name="Rizzi Vicenzo" Type="nvarchar" MaxLength="255" />
-          <Property Name="Alfio Miceli" Type="nvarchar" MaxLength="255" />
-          <Property Name="n" Type="nvarchar" MaxLength="255" />
-          <Property Name="internal" Type="nvarchar" MaxLength="255" />
-          <Property Name="F5" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Moja.dbo.nova' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="template$">
-          <Property Name="Date" Type="datetime" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="NumLog" Type="float" />
-          <Property Name="SumDirections" Type="float" />
-          <Property Name="Punch In Time" Type="datetime" />
-          <Property Name="Punch Out Time (Break Time) " Type="datetime" />
-          <Property Name="Punch In Time (Break Time) " Type="datetime" />
-          <Property Name="Punch Out Time" Type="datetime" />
-          <Property Name="Status" Type="nvarchar" MaxLength="255" />
-          <Property Name="Work Time" Type="datetime" />
-          <Property Name="Break duration" Type="datetime" />
-          <Property Name="Comments" Type="nvarchar" MaxLength="255" />
-          <Property Name="Radnici" Type="nvarchar" MaxLength="255" />
-          <Property Name="Iskljuci" Type="nvarchar" MaxLength="255" />
-          <Property Name="Pokazatelj" Type="nvarchar" MaxLength="255" />
-          <Property Name="Menadzer" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="int" Nullable="false" />
+          <Property Name="LeaveDate" Type="date" />
+          <Property Name="ReturnDate" Type="date" />
+          <Property Name="NumberOfDays" Type="int" />
+          <Property Name="CardholderID" Type="int" />
+        </EntityType>
         <Association Name="FK_AccessLog_Cardholder">
-          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cardholder">
@@ -80,7 +61,9 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Card_Cardholder">
-          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cardholder">
@@ -91,10 +74,25 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Holiday_Cardholder">
+          <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Holiday" Type="Self.Holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MojaModelStoreContainer">
           <EntitySet Name="AccessLog" EntityType="Self.AccessLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cardholder" EntityType="Self.Cardholder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AccessLog_Cardholder" Association="Self.FK_AccessLog_Cardholder">
             <End Role="Cardholder" EntitySet="Cardholder" />
             <End Role="AccessLog" EntitySet="AccessLog" />
@@ -102,6 +100,10 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
           <AssociationSet Name="FK_Card_Cardholder" Association="Self.FK_Card_Cardholder">
             <End Role="Cardholder" EntitySet="Cardholder" />
             <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Holiday_Cardholder" Association="Self.FK_Holiday_Cardholder">
+            <End Role="Cardholder" EntitySet="Cardholder" />
+            <End Role="Holiday" EntitySet="Holiday" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -116,8 +118,8 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
           <Property Name="CardCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CardType" Type="Int32" />
           <Property Name="ControllerID" Type="Int32" />
-          <Property Name="Direction" Type="Int32" Nullable="false" />
-          <Property Name="LocalTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Direction" Type="Int32" />
+          <Property Name="LocalTime" Type="DateTime" Precision="3" />
           <Property Name="CardholderID" Type="Int32" />
           <NavigationProperty Name="Cardholder" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="AccessLog" ToRole="Cardholder" />
         </EntityType>
@@ -142,6 +144,7 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
           <Property Name="Gender" Type="Boolean" />
           <NavigationProperty Name="AccessLogs" Relationship="Self.FK__AccessLog__Cardh__29221CFB" FromRole="Cardholder" ToRole="AccessLog" />
           <NavigationProperty Name="Cards" Relationship="Self.FK__Card__Cardholder__2645B050" FromRole="Cardholder" ToRole="Card" />
+          <NavigationProperty Name="Holidays" Relationship="MojaModel.FK_Holiday_Cardholder" FromRole="Cardholder" ToRole="Holiday" />
         </EntityType>
         <Association Name="FK__AccessLog__Cardh__29221CFB">
           <End Role="Cardholder" Type="Self.Cardholder" Multiplicity="0..1" />
@@ -179,7 +182,37 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
             <End Role="Cardholder" EntitySet="Cardholders" />
             <End Role="Card" EntitySet="Cards" />
           </AssociationSet>
+          <EntitySet Name="Holidays" EntityType="MojaModel.Holiday" />
+          <AssociationSet Name="FK_Holiday_Cardholder" Association="MojaModel.FK_Holiday_Cardholder">
+            <End Role="Cardholder" EntitySet="Cardholders" />
+            <End Role="Holiday" EntitySet="Holidays" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="Int32" Nullable="false" />
+          <Property Name="LeaveDate" Type="DateTime" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="NumberOfDays" Type="Int32" />
+          <Property Name="CardholderID" Type="Int32" />
+          <NavigationProperty Name="Cardholder" Relationship="MojaModel.FK_Holiday_Cardholder" FromRole="Holiday" ToRole="Cardholder" />
+        </EntityType>
+        <Association Name="FK_Holiday_Cardholder">
+          <End Type="MojaModel.Cardholder" Role="Cardholder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MojaModel.Holiday" Role="Holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cardholder">
+              <PropertyRef Name="CardholderID" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="CardholderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -217,6 +250,17 @@ warning 6013: The table/view 'Moja.dbo.template$' does not have a primary key de
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="MojaModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="CardholderID" ColumnName="CardholderID" />
+                <ScalarProperty Name="NumberOfDays" ColumnName="NumberOfDays" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

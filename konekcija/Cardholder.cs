@@ -19,6 +19,7 @@ namespace konekcija
         {
             this.AccessLogs = new HashSet<AccessLog>();
             this.Cards = new HashSet<Card>();
+            this.Holidays = new HashSet<Holiday>();
         }
     
         public int CardholderID { get; set; }
@@ -31,5 +32,7 @@ namespace konekcija
         public virtual ICollection<AccessLog> AccessLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Card> Cards { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Holiday> Holidays { get; set; }
     }
 }

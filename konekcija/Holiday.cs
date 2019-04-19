@@ -12,14 +12,12 @@ namespace konekcija
     using System;
     using System.Collections.Generic;
     
-    public partial class AccessLog
+    public partial class Holiday
     {
-        public int LogID { get; set; }
-        public string CardCode { get; set; }
-        public Nullable<int> CardType { get; set; }
-        public Nullable<int> ControllerID { get; set; }
-        public Nullable<int> Direction { get; set; }
-        public Nullable<System.DateTime> LocalTime { get; set; }
+        public int HolidayID { get; set; }
+        public Nullable<System.DateTime> LeaveDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
+        public Nullable<int> NumberOfDays { get; set; }
         public Nullable<int> CardholderID { get; set; }
     
         public virtual Cardholder Cardholder { get; set; }
